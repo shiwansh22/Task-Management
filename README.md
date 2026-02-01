@@ -1,71 +1,54 @@
-#TaskManagementSystem
+Task Management System
 
-#EarnestFintechLimited
-#TechnicalAssessment
-#FullStackProject
+Earnest Fintech Limited – Technical Assessment
 
-A full-stack Task Management System built using Node.js, TypeScript, Prisma (SQL) and Next.js (App Router).
-The application implements secure authentication, user-scoped task management, pagination, filtering, and a responsive frontend UI, strictly following the given assessment requirements.
+A full-stack task management application built with Node.js, TypeScript, Prisma (SQL) and Next.js (App Router).
+Implements secure authentication using JWT access & refresh tokens, user-scoped task CRUD, filtering, searching, pagination, and a responsive UI.
 
-#Features
+🚀 Features
+Authentication & Security
 
-##Authentication #Security
-
-User Registration
-
-User Login
-
-User Logout
+User Registration, Login, Logout
 
 JWT Access Token (short-lived)
 
 JWT Refresh Token (long-lived, stored as httpOnly cookie)
 
-Automatic token refresh using refresh token
+Automatic token refresh
 
-Secure password hashing using bcryptjs
+Secure password hashing with bcryptjs
 
-Protected API routes using authentication middleware
+Protected routes with middleware
 
-##TaskManagement
+Task Management
 
-Create tasks
+Create, Read, Update, Delete tasks
 
-Read tasks (user-specific)
+Toggle task completion
 
-Update tasks
+Tasks scoped to the logged-in user
 
-Delete tasks
+Search by title
 
-Toggle task completion status
+Filter by status (completed / pending)
 
-Search tasks by title
+Pagination (page & limit)
 
-Filter tasks by status (completed / pending)
+Frontend
 
-Pagination using page & limit parameters
+Next.js (App Router) + TypeScript
 
-##Frontend
+Responsive dashboard (desktop & mobile)
 
-Built using Next.js (App Router) and TypeScript
-
-Responsive UI (desktop & mobile)
-
-Login and Registration pages
-
-Task Dashboard
-
-Add, Edit, Delete, Toggle tasks
-
-Toast notifications for successful actions
+Login & Registration pages
 
 Centralized Axios API layer
 
-Automatic token refresh handling
+Toast notifications for user actions
 
-#TechStack
+🧱 Tech Stack
 
-##Backend
+Backend
 
 Node.js
 
@@ -75,13 +58,13 @@ Express
 
 Prisma ORM
 
-SQLite (SQL Database)
+SQLite (SQL database)
 
 JWT (jsonwebtoken)
 
 bcryptjs
 
-##Frontend
+Frontend
 
 Next.js (App Router)
 
@@ -89,111 +72,85 @@ TypeScript
 
 Axios
 
-#ProjectStructure
-
-#Root
+📁 Project Structure
+.
 ├── backend/
 │   ├── prisma/
-│   │   ├── schema.prisma          # Database schema
-│   │   └── migrations/            # Prisma migrations
-│   │
+│   │   └── schema.prisma
 │   └── src/
 │       ├── modules/
-│       │   ├── auth/              # Authentication logic
-│       │   └── tasks/             # Task CRUD logic
-│       │
-│       ├── middlewares/            # Auth & error middleware
-│       ├── utils/                  # JWT & hashing utilities
-│       ├── config/                 # Environment & JWT config
-│       ├── app.ts                  # Express app setup
-│       └── server.ts               # Server entry point
+│       │   ├── auth/
+│       │   └── tasks/
+│       ├── middlewares/
+│       ├── utils/
+│       ├── app.ts
+│       └── server.ts
 │
-├── task-manager-frontend/
-│   └── src/
-│       ├── app/                    # Next.js app router pages
-│       ├── components/             # Reusable UI components
-│       ├── hooks/                  # Custom React hooks
-│       ├── lib/
-│       │   └── api.ts              # Axios API client
-│       └── styles/                 # Styling files
-│
-└── README.md
+└── task-manager-frontend/
+    └── src/
+        ├── app/
+        ├── components/
+        ├── hooks/
+        ├── lib/
+        │   └── api.ts
+        └── styles/
 
-
-#APIEndpoints
-
-##Auth
-
+🔌 API Endpoints
+Auth
 POST /auth/register
-
 POST /auth/login
-
 POST /auth/refresh
-
 POST /auth/logout
 
-##Tasks #ProtectedRoutes
-
-GET /tasks?page=&limit=&search=&status=
-
-POST /tasks
-
-PATCH /tasks/:id
-
-PATCH /tasks/:id/toggle
-
+Tasks (Protected)
+GET    /tasks?page=&limit=&search=&status=
+POST   /tasks
+PATCH  /tasks/:id
+PATCH  /tasks/:id/toggle
 DELETE /tasks/:id
 
-#RunLocally
-
-##Backend
-
+⚙️ How to Run Locally
+Backend
 cd backend
 npm install
 npx prisma migrate dev
 npm run dev
 
 
-Create .env file in backend/:
+Create backend/.env:
 
 PORT=5000
 JWT_SECRET=your-access-secret
 JWT_REFRESH_SECRET=your-refresh-secret
 
-
-##Frontend
-
+Frontend
 cd task-manager-frontend
 npm install
 npm run dev
 
 
-Create .env.local file in task-manager-frontend/:
+Create task-manager-frontend/.env.local:
 
 NEXT_PUBLIC_API_URL=http://localhost:5000
 
+🔐 Authentication Flow (Brief)
 
-#AuthenticationFlow
-#JWT #RefreshToken
+User logs in → receives access token
 
-User logs in and receives an access token
+Refresh token stored as httpOnly cookie
 
-Refresh token is stored as an httpOnly cookie
+Axios interceptor attaches access token to requests
 
-Axios automatically attaches access token to requests
+On 401, frontend silently calls /auth/refresh
 
-On access token expiry, /auth/refresh is called
+New access token issued without user logout
 
-A new access token is issued without logging the user out
-
-#Notes
+📝 Notes
 
 All task operations are user-scoped
 
-Proper HTTP status codes are used (400, 401, 404, 201, 204)
+Proper HTTP status codes used (400, 401, 404, 201, 204)
 
-Clean separation of concerns across backend modules
+Clean separation of concerns (controllers, middleware, services)
 
-Centralized API handling on frontend
-
-Designed to exactly match the assessment specification
+Designed to exactly match the provided assessment requirements

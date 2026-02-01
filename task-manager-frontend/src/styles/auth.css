@@ -1,0 +1,71 @@
+.glass-card {
+  width: 380px;
+  padding: 2.5rem;
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.glass-card h1 {
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.glass-card p {
+  text-align: center;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+.glass-card input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 1rem;
+
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.glass-card input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.glass-card button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 114, 255, 0.4);
+}
+
+.auth-links {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.auth-links a {
+  color: #aadfff;
+  text-decoration: none;
+}

@@ -1,0 +1,18 @@
+# node
+node_modules/
+npm-debug.log*
+
+# env files
+.env
+.env.local
+.env.production
+
+# prisma
+prisma/dev.db
+
+# next
+.next/
+out/
+
+# misc
+.DS_Store

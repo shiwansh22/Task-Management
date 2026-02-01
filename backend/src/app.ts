@@ -6,6 +6,7 @@ import authRoutes from "./modules/auth/auth.routes";
 import taskRoutes from "./modules/tasks/task.routes";
 import errorMiddleware from "./middlewares/error.middleware";
 
+
 const app = express();
 
 app.use(

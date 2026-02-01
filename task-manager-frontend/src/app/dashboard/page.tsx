@@ -11,6 +11,7 @@ import "@/src/styles/dashboard.css";
 
 export default function DashboardPage() {
   const [tasks, setTasks] = useState<any[]>([]);
+  const [pagination, setPagination] = useState<any>(null);
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
   const [showModal, setShowModal] = useState(false);
@@ -18,9 +19,14 @@ export default function DashboardPage() {
 
   const fetchTasks = async () => {
     try {
-      const res = await api.get("/tasks", { params: { search, status } });
-      setTasks(res.data.tasks || res.data);
+      const res = await api.get("/tasks", {
+        params: { search, status, page: 1, limit: 10 },
+      });
+
+      setTasks(res.data.data);
+      setPagination(res.data.pagination);
     } catch {
+      setTasks([]); // defensive fallback
       showToast("Failed to load tasks");
     }
   };
